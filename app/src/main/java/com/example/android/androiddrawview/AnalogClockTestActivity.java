@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -27,12 +26,11 @@ public class AnalogClockTestActivity extends AppCompatActivity {
     @Override
     protected void onResume () {
         super.onResume();
-        Log.d(TAG, "onResume: ");
         mCalendar = Calendar.getInstance();
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION_TIME_TICK);
         registerReceiver(mTimeChangeReceiver, filter);
-        refleshViewTime();
+        updateViewTime();
     }
 
     @Override
@@ -44,12 +42,11 @@ public class AnalogClockTestActivity extends AppCompatActivity {
     private BroadcastReceiver mTimeChangeReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d(TAG, "onReceive: " + intent.getAction());
-            refleshViewTime();
+            updateViewTime();
         }
     };
 
-    private void refleshViewTime() {
+    private void updateViewTime() {
         mCalendar.setTimeInMillis(System.currentTimeMillis());
         mClockView.setTime(mCalendar.get(Calendar.HOUR), mCalendar.get(Calendar.MINUTE));
         mClockView.invalidate();
