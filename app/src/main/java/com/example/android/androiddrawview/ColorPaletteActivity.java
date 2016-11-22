@@ -21,18 +21,18 @@ public class ColorPaletteActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_palette);
+        mTextInput = (TextView) findViewById(R.id.tv_color_select);
+        mView = (ColorPaletteView) findViewById(R.id.view_color);
+
 
         SeekBar sb;
         ((SeekBar) findViewById(R.id.sb_r)).setOnSeekBarChangeListener(this);
         ((SeekBar) findViewById(R.id.sb_g)).setOnSeekBarChangeListener(this);
         ((SeekBar) findViewById(R.id.sb_b)).setOnSeekBarChangeListener(this);
         sb = (SeekBar) findViewById(R.id.sb_a);
+        sb.setOnSeekBarChangeListener(this);
         sb.setProgress(255);
         mColorAlpha = 255;
-
-        mView = (ColorPaletteView) findViewById(R.id.view_color);
-
-        mTextInput = (TextView) findViewById(R.id.tv_color_select);
         updateColor();
     }
 
