@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.example.android.androiddrawview.ColorPaletteView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/view_color"/>
+
+    <SeekBar
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sb_r"
+        android:max="255"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorR"
+        />
+    <SeekBar
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sb_g"
+        android:max="255"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorG"
+        />
+
+    <SeekBar
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sb_b"
+        android:max="255"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorB"
+
+        />
+
+    <SeekBar
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sb_a"
+        android:max="255"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/ColorA"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/tv_color_select"/>
+</LinearLayout>

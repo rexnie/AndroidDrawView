@@ -17,12 +17,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn = (Button) findViewById(R.id.btn_draw_clock);
         btn.setOnClickListener(this);
+
+        findViewById(R.id.btn_color_palette).setOnClickListener(this);
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_draw_clock:
                 startActivity(new Intent(this, AnalogClockTestActivity.class));
+                break;
+            case R.id.btn_color_palette:
+                startActivity(new Intent(this, ColorPaletteActivity.class));
                 break;
             default:
                 Log.e("MainActivity", "onClick: unknown id");

@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".AnalogClockTestActivity">
         </activity>
-
+        <activity android:name=".ColorPaletteActivity">
+        </activity>
     </application>
+
 </manifest>
