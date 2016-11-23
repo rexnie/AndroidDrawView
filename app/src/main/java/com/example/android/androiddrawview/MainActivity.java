@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_color_palette).setOnClickListener(this);
 
         findViewById(R.id.btn_color_matrix).setOnClickListener(this);
+        findViewById(R.id.btn_pixel_process).setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_color_matrix:
                 startActivity(new Intent(this, ColorMatrixActivity.class));
+                break;
+            case R.id.btn_pixel_process:
+                startActivity(new Intent(this, PixelProcessActivity.class));
                 break;
             default:
                 Log.e("MainActivity", "onClick: unknown id");
