@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn.setOnClickListener(this);
 
         findViewById(R.id.btn_color_palette).setOnClickListener(this);
-
         findViewById(R.id.btn_color_matrix).setOnClickListener(this);
         findViewById(R.id.btn_pixel_process).setOnClickListener(this);
+        findViewById(R.id.btn_shape_transform).setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_pixel_process:
                 startActivity(new Intent(this, PixelProcessActivity.class));
+                break;
+            case R.id.btn_shape_transform:
+                startActivity(new Intent(this, ShapeTransformActivity.class));
                 break;
             default:
                 Log.e("MainActivity", "onClick: unknown id");

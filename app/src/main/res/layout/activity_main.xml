@@ -30,6 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_pixel_process"
-        android:text="PixcelProcess"
+        android:text="PixelProcess"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_shape_transform"
+        android:text="PixelProcess"
         android:textAllCaps="false"/>
 </LinearLayout>
