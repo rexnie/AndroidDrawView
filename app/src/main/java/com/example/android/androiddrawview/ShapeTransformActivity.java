@@ -1,32 +1,32 @@
 package com.example.android.androiddrawview;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 
 public class ShapeTransformActivity extends AppCompatActivity
         implements View.OnClickListener {
     private static final String TAG = "ShapeTransformActivity";
-    private ImageView mImageViewShape;
-    private ImageView mImageViewShape2;
+    private ShapeView mShapeView;
     private Bitmap mBmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shape_transform);
-        mImageViewShape = (ImageView) findViewById(R.id.iv_shape);
-        //mImageViewShape2 = (ImageView) findViewById(R.id.iv_shape2);
+        mShapeView = (ShapeView) findViewById(R.id.shape_view);
 
         mBmp = BitmapFactory.decodeResource(getResources(), R.drawable.robot);
-        Log.d(TAG, "onCreate: mBmp, w=" + mBmp.getWidth() + ",h=" + mBmp.getHeight());
-        mImageViewShape.setImageBitmap(mBmp);
 
+        mShapeView.setBitmap(mBmp);
+
+        findViewById(R.id.btn_show_orginal).setOnClickListener(this);
         findViewById(R.id.btn_show_rotate).setOnClickListener(this);
         findViewById(R.id.btn_show_translate).setOnClickListener(this);
         findViewById(R.id.btn_show_scale).setOnClickListener(this);
@@ -34,48 +34,81 @@ public class ShapeTransformActivity extends AppCompatActivity
     }
 
     public void onClick(View v) {
-        Bitmap bm;
         switch (v.getId()) {
+            case R.id.btn_show_orginal:
+                showOriginal();
+                break;
             case R.id.btn_show_rotate:
-                bm = showRotate(mBmp, 90);
-                mImageViewShape.setImageBitmap(bm);
+                showRotate(45);
                 break;
             case R.id.btn_show_translate:
-                bm = showTranslate(mBmp);
-                mImageViewShape.setImageBitmap(bm);
+                showTranslate(300, 500);
                 break;
             case R.id.btn_show_scale:
-                bm = showScale(mBmp);
-                mImageViewShape.setImageBitmap(bm);
+                showScale(.2f, .5f);
+                break;
+            case R.id.btn_show_skew:
+                showSkew(0, 0.5f);
                 break;
         }
     }
 
-    private Bitmap showRotate(Bitmap in, float degrees) {
-        int w = in.getWidth();
-        int h = in.getHeight();
-
+    private void showRotate(float degrees) {
         Matrix m = new Matrix();
         m.setRotate(degrees);
-
-        return Bitmap.createBitmap(in, 0, 0, w, h, m, false);
+        mShapeView.setMatrix(m);
+        mShapeView.invalidate();
     }
 
-    private Bitmap showTranslate(Bitmap in) {
-        int w = in.getWidth();
-        int h = in.getHeight();
-
+    private void showTranslate(float dx, float dy) {
         Matrix m = new Matrix();
-        m.setTranslate(10, 10);
-        return Bitmap.createBitmap(in, 0, 0, w, h, m, true);
-
+        m.setTranslate(dx, dy);
+        mShapeView.setMatrix(m);
+        mShapeView.invalidate();
     }
 
-    private Bitmap showScale(Bitmap in) {
-        int w = in.getWidth();
-        int h = in.getHeight();
+    private void showScale(float sx, float sy) {
         Matrix m = new Matrix();
-        m.setScale(0.3f, 0.2f);
-        return Bitmap.createBitmap(in, 0, 0, w, h, m, false);
+        m.setScale(sx, sy);
+        mShapeView.setMatrix(m);
+        mShapeView.invalidate();
+    }
+
+    private void showSkew(float kx, float ky) {
+        Matrix m = new Matrix();
+        m.setSkew(kx, ky);
+        mShapeView.setMatrix(m);
+        mShapeView.invalidate();
+    }
+
+    private void showOriginal() {
+        mShapeView.setMatrix(null);
+        mShapeView.invalidate();
+    }
+}
+
+class ShapeView extends View {
+    private Bitmap mBitmapOrg;
+    private Matrix mMatrix;
+    public ShapeView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+    protected void setBitmap(Bitmap org) {
+        if (org != null) {
+            mBitmapOrg = org;
+        }
+    }
+
+    protected void setMatrix(Matrix m) {
+        mMatrix = m;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        if (mMatrix != null) {
+            canvas.drawBitmap(mBitmapOrg, mMatrix, null);
+        } else {
+            canvas.drawBitmap(mBitmapOrg, 0, 0, null);
+        }
     }
 }

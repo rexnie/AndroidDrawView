@@ -9,13 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.example.android.androiddrawview.ShapeView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:id="@+id/iv_shape"/>
-
-
+            android:id="@+id/shape_view"/>
     </LinearLayout>
 
     <LinearLayout
@@ -28,6 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btn_show_orginal"
+                android:text="显示原图"
+                android:textAllCaps="false"/>
 
             <Button
                 android:layout_width="0dp"
