@@ -66,7 +66,17 @@ public class DrawBoardView extends SurfaceView implements SurfaceHolder.Callback
     @Override
     public void run() {
         while (mIsDrawing) {
+            long start = System.currentTimeMillis();
             draw();
+            long end = System.currentTimeMillis();
+
+            // 根据经验，一般延时50-100ms左右
+            if (end - start < 100) {
+                try {
+                    Thread.sleep(100 - (end - start));
+                } catch (InterruptedException e) {
+                }
+            }
         }
     }
 
