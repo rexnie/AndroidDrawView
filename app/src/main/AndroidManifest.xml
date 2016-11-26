@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".ShaderDemoActivity">
         </activity>
+        <activity android:name=".ReflectViewActivity">
+        </activity>
     </application>
 
 </manifest>
