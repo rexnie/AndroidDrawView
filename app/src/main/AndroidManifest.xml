@@ -35,6 +35,8 @@
         </activity>
         <activity android:name=".PathEffectActivity">
         </activity>
+        <activity android:name=".SinusoidViewActivity">
+        </activity>
     </application>
 
 </manifest>

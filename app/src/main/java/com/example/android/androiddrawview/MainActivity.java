@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_shader_view).setOnClickListener(this);
         findViewById(R.id.btn_reflect_view).setOnClickListener(this);
         findViewById(R.id.btn_path_effect_view).setOnClickListener(this);
+        findViewById(R.id.btn_sinusoid).setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -60,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_path_effect_view:
                 startActivity(new Intent(this, PathEffectActivity.class));
+                break;
+            case R.id.btn_sinusoid:
+                startActivity(new Intent(this, SinusoidViewActivity.class));
                 break;
             default:
                 Log.e("MainActivity", "onClick: unknown id");

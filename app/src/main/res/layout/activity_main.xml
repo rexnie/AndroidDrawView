@@ -53,20 +53,26 @@
         android:id="@+id/btn_play_view"
         android:text="PlayView"
         android:textAllCaps="false"/>
-
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_shader_view"
-        android:text="Shader"
-        android:textAllCaps="false"/>
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/btn_shader_view"
+            android:text="Shader"
+            android:textAllCaps="false"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_reflect_view"
-        android:text="Reflect"
-        android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/btn_reflect_view"
+            android:text="Reflect"
+            android:textAllCaps="false"/>
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -74,4 +80,23 @@
         android:id="@+id/btn_path_effect_view"
         android:text="PathEffect"
         android:textAllCaps="false"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/btn_sinusoid"
+            android:text="Sinusoid"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/btn_s"
+            android:text="Sinusoid"
+            android:textAllCaps="false"/>
+    </LinearLayout>
 </LinearLayout>
