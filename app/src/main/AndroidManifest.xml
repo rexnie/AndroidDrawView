@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".BitmapMeshActivity">
         </activity>
+        <activity android:name=".PlayViewActivity">
+        </activity>
     </application>
 
 </manifest>
