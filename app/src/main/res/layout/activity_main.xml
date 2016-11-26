@@ -53,4 +53,11 @@
         android:id="@+id/btn_play_view"
         android:text="PlayView"
         android:textAllCaps="false"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_shader_view"
+        android:text="Shader"
+        android:textAllCaps="false"/>
 </LinearLayout>

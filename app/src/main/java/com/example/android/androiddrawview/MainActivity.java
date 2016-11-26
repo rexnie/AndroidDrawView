@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_shape_transform).setOnClickListener(this);
         findViewById(R.id.btn_bitmap_mesh).setOnClickListener(this);
         findViewById(R.id.btn_play_view).setOnClickListener(this);
-
+        findViewById(R.id.btn_shader_view).setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_play_view:
                 startActivity(new Intent(this, PlayViewActivity.class));
+                break;
+            case R.id.btn_shader_view:
+                startActivity(new Intent(this, ShaderDemoActivity.class));
                 break;
             default:
                 Log.e("MainActivity", "onClick: unknown id");
