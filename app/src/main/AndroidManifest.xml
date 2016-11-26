@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".ShapeTransformActivity">
         </activity>
+        <activity android:name=".BitmapMeshActivity">
+        </activity>
     </application>
 
 </manifest>

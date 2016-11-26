@@ -39,4 +39,11 @@
         android:id="@+id/btn_shape_transform"
         android:text="PixelProcess"
         android:textAllCaps="false"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_bitmap_mesh"
+        android:text="BitmapMesh"
+        android:textAllCaps="false"/>
 </LinearLayout>
