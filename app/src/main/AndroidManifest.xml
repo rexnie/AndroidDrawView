@@ -33,6 +33,8 @@
         </activity>
         <activity android:name=".ReflectViewActivity">
         </activity>
+        <activity android:name=".PathEffectActivity">
+        </activity>
     </application>
 
 </manifest>
