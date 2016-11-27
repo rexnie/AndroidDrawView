@@ -76,7 +76,11 @@ public class SinusoidView extends SurfaceView implements SurfaceHolder.Callback,
             }
             y = (int) (100 * Math.sin(x * 2 * Math.PI / 180) + 400);
             mPath.lineTo(x, y);
-            draw();
+
+            // 避免主线程退出后子线程继续画图
+            if (mIsDrawing) {
+                draw();
+            }
             /*
             try {
                 Thread.sleep(100);
@@ -87,10 +91,20 @@ public class SinusoidView extends SurfaceView implements SurfaceHolder.Callback,
     }
 
     private void draw() {
-        mCanvas = mHolder.lockCanvas();
-        mCanvas.drawColor(Color.WHITE);
-        mCanvas.drawPath(mPath, mPaint);
-        //提交
-        mHolder.unlockCanvasAndPost(mCanvas);
+        try {
+            mCanvas = mHolder.lockCanvas();
+            mCanvas.drawColor(Color.WHITE);
+            mCanvas.drawPath(mPath, mPaint);
+            //提交
+        } catch (Exception e) {
+            // 主线程退出后子线程继续画图时，mCanvas为空
+            // catch NullPointerException
+        } finally {
+            // 加if是为了避免出现IllegalStateException
+            // java.lang.IllegalStateException: Surface has already been released.
+            if (mCanvas != null) {
+                mHolder.unlockCanvasAndPost(mCanvas);
+            }
+        }
     }
 }
